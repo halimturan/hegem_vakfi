@@ -1,0 +1,123 @@
+{% extends 'layout.html' %}
+{% load static i18n %}
+
+{% block title %}
+    {% trans 'Projelerimiz' %}
+{% endblock %}
+
+{% block content %}
+    <!--begin::banner-->
+    <div class="position-relative">
+        <img src="{% static 'img/projects.jpg' %}" alt="" class="card-rounded mw-100 h-150px w-lg-100 h-lg-250px w-100 opacity-25" style="object-fit: cover;">
+        <div class="title position-absolute fs-2x left-20 text-center w-100" style="top: 35%">
+            <p class="fs-3hx">{% trans 'Projelerimiz' %}</p>
+        </div>
+    </div>
+    <!--end::banner-->
+    <!--begin::container-->
+    <div class="container mb-10">
+        <!--begin::breadcrumb-->
+        <ol class="breadcrumb text-muted fs-6 fw-semibold my-10">
+            <li class="breadcrumb-item"><a href="/" class="">{% trans 'Anasayfa' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'what_we_do:projects' %}" class="">{% trans 'Neler Yapıyoruz' %}</a></li>
+            <li class="breadcrumb-item text-muted">{% trans 'Projelerimiz' %}</li>
+        </ol>
+        <!--end::breadcrumb-->
+        <!--begin::container-->
+        <div class="row">
+            {% for project in projects %}
+                <!--begin::col-md-4-->
+                <div class="col-md-4 my-3">
+                    <!--begin::card-->
+                    <div class="card border-hover-primary">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0 pt-9">
+                            <!--begin::Card Title-->
+                            <div class="card-title m-0">
+                                <!--begin::Avatar-->
+                                <div class="symbol symbol-50px w-50px">
+                                    <!--begin::Svg Icon | path: /var/www/preview.keenthemes.com/keenthemes/metronic/docs/core/html/src/media/icons/duotune/general/gen005.svg-->
+                                        <span class="svg-icon svg-icon-primary svg-icon-3tx">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.3" d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM12.5 18C12.5 17.4 12.6 17.5 12 17.5H8.5C7.9 17.5 8 17.4 8 18C8 18.6 7.9 18.5 8.5 18.5L12 18C12.6 18 12.5 18.6 12.5 18ZM16.5 13C16.5 12.4 16.6 12.5 16 12.5H8.5C7.9 12.5 8 12.4 8 13C8 13.6 7.9 13.5 8.5 13.5H15.5C16.1 13.5 16.5 13.6 16.5 13ZM12.5 8C12.5 7.4 12.6 7.5 12 7.5H8C7.4 7.5 7.5 7.4 7.5 8C7.5 8.6 7.4 8.5 8 8.5H12C12.6 8.5 12.5 8.6 12.5 8Z" fill="currentColor"></path>
+                                                <rect x="7" y="17" width="6" height="2" rx="1" fill="currentColor"></rect>
+                                                <rect x="7" y="12" width="10" height="2" rx="1" fill="currentColor"></rect>
+                                                <rect x="7" y="7" width="6" height="2" rx="1" fill="currentColor"></rect>
+                                                <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                    <!--end::Svg Icon-->
+                                </div>
+                                <!--end::Avatar-->
+                            </div>
+                            <!--end::Car Title-->
+                            {% if project.attachment %}
+                            <!--begin::card-toolbar-->
+                            <div class="card-toolbar">
+                                <a href="{{ project.attachment.url }}" class="badge badge-light-primary fw-bold me-auto px-4 py-3 cursor-pointer">{% trans 'Dosyayı Görüntüle' %}</a>
+                            </div>
+                            <!--end::card-toolbar-->
+                            {% endif %}
+                        </div>
+                        <!--end:: Card header-->
+
+                        <!--begin:: Card body-->
+                        <div class="card-body px-9 pt-4 pb-3">
+                            <!--begin::Name-->
+                            <div class="fs-3 fw-bold text-gray-900 h-65px">
+                                {{ project.name }}
+                            </div>
+                            <!--end::Name-->
+
+                            <!--begin::Description-->
+                            <p class="text-gray-500 fw-semibold fs-5 mt-1 mb-3">
+                                {{ project.description }}
+                            </p>
+                            <!--end::Description-->
+                        </div>
+                        <!--end:: Card body-->
+                    </div>
+                    <!--end::card-->
+                </div>
+                <!--end::col-md-4-->
+            {% endfor %}
+        </div>
+        <!--end::row-->
+        <!--begin::Pagination-->
+        <div class="d-flex flex-stack justify-content-center flex-wrap pt-10 mt-5">
+            <!--begin::Pages-->
+            <ul class="pagination">
+                <li class="page-item previous">
+                    {% if projects.has_previous %}
+                      <a href="?page={{ projects.previous_page_number }}" class="page-link"><i class="previous"></i></a>
+                    {% else %}
+                      <a href="#" class="page-link"><i class="previous"></i></a>
+                    {% endif %}
+                </li>
+
+                {% for i in projects.paginator.page_range %}
+                  {% if projects.number == i %}
+                    <li class="page-item active">
+                        <a href="#" class="page-link">{{ i }}</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item">
+                        <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+
+
+                <li class="page-item next">
+                    {% if projects.has_next %}
+                        <a href="?page={{ projects.next_page_number }}" class="page-link"><i class="next"></i></a>
+                    {% else %}
+                        <a href="#" class="page-link"><i class="next"></i></a>
+                {% endif %}
+            </ul>
+            <!--end::Pages-->
+        </div>
+        <!--end::Pagination-->
+    </div>
+    <!--end::container-->
+{% endblock %}

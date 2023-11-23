@@ -1,0 +1,113 @@
+{% extends 'layout.html' %}
+{% load static i18n %}
+
+{% block title %}
+    {% trans 'Haberler' %}
+{% endblock %}
+
+{% block content %}
+    <!--begin::banner-->
+    <div class="position-relative">
+        <img src="{% static 'img/news.jpg' %}" alt="" class="card-rounded mw-100 h-150px w-lg-100 h-lg-250px w-100 opacity-25" style="object-fit: cover;">
+        <div class="title position-absolute fs-2x left-20 text-center w-100" style="top: 35%">
+            <p class="fs-3hx">{% trans 'Haberler' %}</p>
+        </div>
+    </div>
+    <!--end::banner-->
+    <!--begin::container-->
+    <div class="container">
+        <!--begin::breadcrumb-->
+        <ol class="breadcrumb text-muted fs-6 fw-semibold my-10">
+            <li class="breadcrumb-item"><a href="/static" class="">{% trans 'Anasayfa' %}</a></li>
+            <li class="breadcrumb-item text-muted">{% trans 'Haberler' %}</li>
+        </ol>
+        <!--end::breadcrumb-->
+        <!--begin::info-->
+        <span class="fs-3 text-gray-600 mb-10">{% blocktranslate %}{{ count }} adet haber bulunmaktadır.{% endblocktranslate %}</span>
+        <!--end::info-->
+        <!--begin::row-->
+        <div class="row mt-lg-10 mt-5">
+            {% for new in news %}
+                <!--begin::col-lg-4-->
+                <div class="col-lg-4 mb-5 px-5">
+                    <!--begin::card-->
+                    <div class="card card-xl-stretch">
+                        <!--begin::Body-->
+                        <div class="card-body p-0">
+                            <!--begin::image-->
+                            <div class="card-rounded-bottom">
+                                <img src="{{ new.image.url }}" class="w-100 h-250px card-rounded" alt="image">
+                            </div>
+                            <!--end::image-->
+                            <!--begin::card-->
+                            <div class="pt-8 px-8 mt-n15 position-relative">
+                                <!--begin::Row-->
+                                <div class="row g-0">
+                                    <!--begin::Col-->
+                                    <div class="col-5 d-flex flex-column bg-light-primary px-4 py-3 rounded-2 mb-2">
+                                        <div class="text-primary fw-semibold fs-6">
+                                            {{ new.created_at|date }}
+                                        </div>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::card-->
+                            <!--begin::news-title-->
+                            <div class="p-6">
+                                <div class="h-100px">
+                                    {{ new.title|safe }}
+                                </div>
+                            </div>
+                            <!--end::news-title-->
+                            <div class="d-flex justify-content-center mb-5 px-2">
+                                <a href="{% url 'news:news_detail' new.slug %}" class="btn btn-light-primary btn-sm">{% trans 'Haberi Oku' %}</a>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::card-->
+                </div>
+                <!--end::col-lg-4-->
+            {% endfor %}
+        </div>
+        <!--end::row-->
+        <!--begin::Pagination-->
+        <div class="d-flex flex-stack justify-content-center flex-wrap pt-10 mt-5">
+            <!--begin::Pages-->
+            <ul class="pagination">
+                <li class="page-item previous">
+                    {% if news.has_previous %}
+                      <a href="?page={{ news.previous_page_number }}" class="page-link"><i class="previous"></i></a>
+                    {% else %}
+                      <a href="#" class="page-link"><i class="previous"></i></a>
+                    {% endif %}
+                </li>
+
+                {% for i in news.paginator.page_range %}
+                  {% if news.number == i %}
+                    <li class="page-item active">
+                        <a href="#" class="page-link">{{ i }}</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item">
+                        <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+
+
+                <li class="page-item next">
+                    {% if editions.has_next %}
+                        <a href="?page={{ editions.next_page_number }}" class="page-link"><i class="next"></i></a>
+                    {% else %}
+                        <a href="#" class="page-link"><i class="next"></i></a>
+                {% endif %}
+            </ul>
+            <!--end::Pages-->
+        </div>
+        <!--end::Pagination-->
+    </div>
+    <!--end::container-->
+{% endblock %}

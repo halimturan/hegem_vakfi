@@ -1,0 +1,53 @@
+{% load i18n %}
+
+<div class="container mt-lg-10 mt-5 mb-5">
+    <div class="d-flex justify-content-between">
+        <span class="fs-2qx fw-bold text-gray-600">{% trans 'Haberler' %}</span>
+        <a class="fs-4 cursor-pointer" href="{% url 'news:all_news' %}">
+            <span>{% trans 'Tümünü Gör' %}</span>
+        </a>
+    </div>
+    <div class="separator my-5"></div>
+    <div class="row mt-lg-10 mt-5">
+        {% for new in news %}
+            <div class="col-lg-4 mb-5 px-5">
+                <div class="card card-xl-stretch">
+                    <!--begin::Body-->
+                    <div class="card-body p-0">
+                        <!--begin::image-->
+                        <div class="card-rounded-bottom">
+                            <img src="{{ new.image.url }}" class="w-100 h-250px card-rounded" alt="image">
+                        </div>
+                        <!--end::image-->
+                        <!--begin::card-->
+                        <div class="pt-8 px-8 mt-n15 position-relative">
+                            <!--begin::Row-->
+                            <div class="row g-0">
+                                <!--begin::Col-->
+                                <div class="col-5 d-flex flex-column bg-light-primary px-4 py-3 rounded-2 mb-2">
+                                    <div class="text-primary fw-semibold fs-6">
+                                        {{ new.created_at|date }}
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                        </div>
+                        <!--end::card-->
+                        <!--begin::news-title-->
+                        <div class="p-6">
+                            <div class="h-100px">
+                                {{ new.title|safe }}
+                            </div>
+                        </div>
+                        <!--end::news-title-->
+                        <div class="d-flex justify-content-center mb-5 px-2">
+                            <a href="{% url 'news:news_detail' new.slug %}" class="btn btn-light-primary btn-sm">{% trans 'Haberi Oku' %}</a>
+                        </div>
+                    </div>
+                    <!--end::Body-->
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

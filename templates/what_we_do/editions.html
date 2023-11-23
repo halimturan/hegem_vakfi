@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+{% load static i18n %}
+
+{% block title %}
+    {% trans 'Yayınlarımız' %}
+{% endblock %}
+
+{% block content %}
+    <!--begin::banner-->
+    <div class="position-relative">
+        <img src="{% static 'img/books.jpg' %}" alt="" class="card-rounded mw-100 h-150px w-lg-100 h-lg-250px w-100 opacity-25" style="object-fit: cover;">
+        <div class="title position-absolute fs-2x left-20 text-center w-100" style="top: 35%">
+            <p class="fs-3hx">{% trans 'Yayınlarımız' %}</p>
+        </div>
+    </div>
+    <!--end::banner-->
+    <!--begin::container-->
+    <div class="container mb-10">
+        <!--begin::breadcrumb-->
+        <ol class="breadcrumb text-muted fs-6 fw-semibold my-10">
+            <li class="breadcrumb-item"><a href="/" class="">{% trans 'Anasayfa' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'what_we_do:editions' %}" class="">{% trans 'Neler Yapıyoruz' %}</a></li>
+            <li class="breadcrumb-item text-muted">{% trans 'Yayınlarımız' %}</li>
+        </ol>
+        <!--end::breadcrumb-->
+        <!--begin::container-->
+        <div class="row">
+            {% for edition in editions %}
+                <!--begin::col-md-4-->
+                <div class="col-md-4 my-3">
+                    <!--begin::card-->
+                    <div class="card">
+                        <div class="d-flex justify-content-center p-5">
+                            <img src="{{ edition.image.url }}" alt="cover" class="h-200px rounded-3">
+                        </div>
+                        <div class="d-flex justify-content-center fs-1 fw-bold">
+                            {{ edition.name }}
+                        </div>
+                        <div class="d-flex justify-content-center fs-3 my-2">
+                            <span>{{ edition.writer }} - {{ edition.year }}</span>
+                        </div>
+                        <div class="d-flex justify-content-center fs-4 mb-5 text-gray-600">
+                            {{ edition.publisher }}
+                        </div>
+                    </div>
+                    <!--end::card-->
+                </div>
+                <!--end::col-md-4-->
+            {% endfor %}
+        </div>
+        <!--end::row-->
+        <!--begin::Pagination-->
+        <div class="d-flex flex-stack justify-content-center flex-wrap pt-10 mt-5">
+            <!--begin::Pages-->
+            <ul class="pagination">
+                <li class="page-item previous">
+                    {% if editions.has_previous %}
+                      <a href="?page={{ editions.previous_page_number }}" class="page-link"><i class="previous"></i></a>
+                    {% else %}
+                      <a href="#" class="page-link"><i class="previous"></i></a>
+                    {% endif %}
+                </li>
+
+                {% for i in editions.paginator.page_range %}
+                  {% if editions.number == i %}
+                    <li class="page-item active">
+                        <a href="#" class="page-link">{{ i }}</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item">
+                        <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+
+
+                <li class="page-item next">
+                    {% if editions.has_next %}
+                        <a href="?page={{ editions.next_page_number }}" class="page-link"><i class="next"></i></a>
+                    {% else %}
+                        <a href="#" class="page-link"><i class="next"></i></a>
+                {% endif %}
+            </ul>
+            <!--end::Pages-->
+        </div>
+        <!--end::Pagination-->
+    </div>
+    <!--end::container-->
+{% endblock %}

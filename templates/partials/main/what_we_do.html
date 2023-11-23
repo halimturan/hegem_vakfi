@@ -1,0 +1,84 @@
+{% load i18n %}
+
+<div class="container mt-10 mb-5">
+    <!--begin::row-->
+    <div class="row">
+        <div class="text-center">
+            <span class="fs-2qx fw-bold text-gray-600">{% trans 'Neler Yapıyoruz?' %}</span>
+        </div>
+    </div>
+    <!--end::row-->
+    <!--begin::seperator-->
+    <div class="separator my-5"></div>
+    <!--end::seperator-->
+    <!--begin::row-->
+    <div class="row">
+        <!--begin::col-md-4-->
+        <div class="col-md-4">
+            <!--begin::card-->
+            <div class="card">
+                <div class="text-center p-10">
+                    <i style="color: #7899ac" class="fa fa-book fs-5hx"></i>
+                </div>
+                <div class="text-center d-grid">
+                    <div class="fs-1 d-flex justify-content-center">
+                        <span>{% trans 'Yayınlarımız' %}</span>
+                    </div>
+                    <div class="d-flex justify-content-center my-5">
+                        <span>{% blocktrans %}{{ editions }} adet yayınımız bulunmaktadır{% endblocktrans %}</span>
+                    </div>
+                    <div class="d-flex justify-content-center mb-5">
+                        <a href="{% url 'what_we_do:editions' %}" class="btn btn-light-primary">{% trans 'Yayınları İncele' %}</a>
+                    </div>
+                </div>
+            </div>
+            <!--end::card-->
+        </div>
+        <!--end::col-md-4-->
+        <!--begin::col-md-4-->
+        <div class="col-md-4">
+            <!--begin::card-->
+            <div class="card">
+                <div class="text-center p-10">
+                    <i style="color: #7899ac" class="las la-file-invoice fs-5hx"></i>
+                </div>
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <span class="fs-1">{% trans 'Projelerimiz' %}</span>
+                    </div>
+                    <div class="d-flex justify-content-center my-5">
+                        <span>{% blocktranslate %}{{ projects }} adet proje{% endblocktranslate %}</span>
+                    </div>
+                    <div class="d-flex justify-content-center mb-5">
+                        <a href="{% url 'what_we_do:projects' %}" class="btn btn-light-primary">{% trans 'Projeleri İncele' %}</a>
+                    </div>
+                </div>
+            </div>
+            <!--end::card-->
+        </div>
+        <!--end::col-md-4-->
+        <!--begin::col-md-4-->
+        <div class="col-md-4">
+            <!--begin::card-->
+            <div class="card">
+                <div class="text-center p-10">
+                    <i style="color: #7899ac" class="fa fa-scroll fs-5hx"></i>
+                </div>
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <span class="fs-1">{% trans 'Raporlarımız' %}</span>
+                    </div>
+                    <div class="d-flex justify-content-center my-5">
+                        <span>{% blocktranslate %}{{ reports }} adet rapor{% endblocktranslate %}</span>
+                    </div>
+                    <div class="d-flex justify-content-center mb-5">
+                        <a href="{% url 'what_we_do:reports' %}" class="btn btn-light-primary">{% trans 'Raporları İncele' %}</a>
+                    </div>
+                </div>
+            </div>
+            <!--end::card-->
+        </div>
+        <!--end::col-md-4-->
+    </div>
+    <!--end::row-->
+</div>

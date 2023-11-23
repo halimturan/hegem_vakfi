@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% load static i18n %}
+
+{% block title %}
+    {% trans 'Anasayfa' %}
+{% endblock %}
+
+{% block content %}
+    <!--begin::Main Slider-->
+    {% include 'partials/main/main_slider.html' %}
+    <!--end::Main Slider-->
+    <!--begin::News-->
+    {% include 'partials/main/news.html' %}
+    <!--end::News-->
+    <!--begin::What We Do-->
+    {% include 'partials/main/what_we_do.html' %}
+    <!--end::What We Do-->
+{% endblock %}

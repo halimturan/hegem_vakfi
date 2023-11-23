@@ -1,0 +1,201 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-11-13 14:49+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/main/urls.py:9
+msgid "iletisim"
+msgstr "contact"
+
+#: apps/main/urls.py:10
+msgid "sayfalar/<str:slug>"
+msgstr "pages/<str:slug>"
+
+#: apps/news/urls.py:9
+msgid "detay/<str:news_slug>"
+msgstr "detail/<str:news_slug>"
+
+#: apps/what_we_do/urls.py:8
+msgid "yayinlarimiz"
+msgstr "our_editions"
+
+#: apps/what_we_do/urls.py:9
+msgid "projelerimiz"
+msgstr "our_projects"
+
+#: apps/what_we_do/urls.py:10
+msgid "raporlarimiz"
+msgstr "our_reports"
+
+#: hegem_vakfi/settings.py:129
+msgid "Turkish"
+msgstr ""
+
+#: hegem_vakfi/settings.py:130
+msgid "English"
+msgstr ""
+
+#: hegem_vakfi/urls.py:28
+msgid "neler_yapiyoruz/"
+msgstr "what_we_do/"
+
+#: hegem_vakfi/urls.py:29
+msgid "haberler/"
+msgstr "news/"
+
+#: templates/contact.html:13 templates/contact.html:31
+msgid "İletişim"
+msgstr "Contact"
+
+#: templates/contact.html:19 templates/index.html:5 templates/news/news.html:21
+#: templates/what_we_do/editions.html:21 templates/what_we_do/projects.html:21
+#: templates/what_we_do/reports.html:21
+msgid "Anasayfa"
+msgstr "Home"
+
+#: templates/contact.html:47
+msgid "Görüşlerinizi Bize İletin"
+msgstr "Send Us Your Feedback"
+
+#: templates/contact.html:53
+msgid "İsim"
+msgstr "Name"
+
+#: templates/contact.html:61
+msgid "Email"
+msgstr "Email"
+
+#: templates/contact.html:71
+msgid "Konu"
+msgstr "Subject"
+
+#: templates/contact.html:78
+msgid "Mesaj"
+msgstr "Message"
+
+#: templates/contact.html:86
+msgid "Gönder"
+msgstr "Send"
+
+#: templates/contact.html:117
+msgid "İrtibat"
+msgstr "Phone"
+
+#: templates/contact.html:148
+msgid "Adres"
+msgstr "Address"
+
+#: templates/news/news.html:5 templates/news/news.html:13
+#: templates/news/news.html:22 templates/news/news_detail.html:5
+#: templates/news/news_detail.html:13 templates/partials/main/news.html:5
+msgid "Haberler"
+msgstr "News"
+
+#: templates/news/news.html:26
+#, python-format
+msgid "%(count)s adet haber bulunmaktadır."
+msgstr "There are %(count)s news."
+
+#: templates/news/news.html:65 templates/partials/main/news.html:45
+msgid "Haberi Oku"
+msgstr "Read News"
+
+#: templates/partials/layout/footer.html:49
+msgid "Sunduklarımız"
+msgstr "What we offer"
+
+#: templates/partials/layout/footer.html:63
+msgid "Sosyal Medya"
+msgstr "Social Media"
+
+#: templates/partials/layout/header.html:14
+msgid "Diller"
+msgstr "Languages"
+
+#: templates/partials/main/news.html:7
+msgid "Tümünü Gör"
+msgstr "See All"
+
+#: templates/partials/main/what_we_do.html:7
+msgid "Neler Yapıyoruz?"
+msgstr "What Do We Do?"
+
+#: templates/partials/main/what_we_do.html:25
+#: templates/what_we_do/editions.html:5 templates/what_we_do/editions.html:13
+#: templates/what_we_do/editions.html:23
+msgid "Yayınlarımız"
+msgstr "Our Editions"
+
+#: templates/partials/main/what_we_do.html:28
+#, fuzzy, python-format
+#| msgid "%(editions)s adet yayınımız bulunmaktadır"
+msgid "%(editions)s adet yayınımız bulunmaktadır"
+msgstr "There are %(count)s editions."
+
+#: templates/partials/main/what_we_do.html:31
+msgid "Yayınları İncele"
+msgstr "Review Publications"
+
+#: templates/partials/main/what_we_do.html:47
+#: templates/what_we_do/projects.html:5 templates/what_we_do/projects.html:13
+#: templates/what_we_do/projects.html:23
+msgid "Projelerimiz"
+msgstr "Our Projects"
+
+#: templates/partials/main/what_we_do.html:50
+#, fuzzy, python-format
+#| msgid "%(projects)s adet proje"
+msgid "%(projects)s adet proje"
+msgstr "There are %(reports)s project"
+
+#: templates/partials/main/what_we_do.html:53
+msgid "Projeleri İncele"
+msgstr "Review Projects"
+
+#: templates/partials/main/what_we_do.html:69
+#: templates/what_we_do/reports.html:5 templates/what_we_do/reports.html:13
+#: templates/what_we_do/reports.html:23
+msgid "Raporlarımız"
+msgstr "Our Reports"
+
+#: templates/partials/main/what_we_do.html:72
+#, python-format
+msgid "%(reports)s adet rapor"
+msgstr "There are %(reports)s reports"
+
+#: templates/partials/main/what_we_do.html:75
+msgid "Raporları İncele"
+msgstr "Review Reports"
+
+#: templates/what_we_do/editions.html:22 templates/what_we_do/projects.html:22
+#: templates/what_we_do/reports.html:22
+msgid "Neler Yapıyoruz"
+msgstr "What Do We Do"
+
+#: templates/what_we_do/projects.html:57
+msgid "Dosyayı Görüntüle"
+msgstr "Review File"
+
+#: templates/what_we_do/reports.html:27
+#, python-format
+msgid "%(count)s adet rapor bulunmaktadır."
+msgstr "There are %(count)s reports."
+
+#: templates/what_we_do/reports.html:57
+msgid "Raporu Görüntüle"
+msgstr "Review Report"
