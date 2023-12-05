@@ -6,17 +6,28 @@
 {% endblock %}
 
 {% block content %}
+    {% if page %}
     <!--begin::banner-->
     <div class="position-relative">
         <img src="{% static 'img/team.jpg' %}" alt="" class="card-rounded mw-100 h-150px w-lg-100 h-lg-250px w-100 opacity-25" style="object-fit: cover;">
         <div class="title position-absolute fs-2x left-20 text-center w-100" style="top: 35%">
-            <p class="fs-3hx">{{ page.title|safe }}</p>
+            <p class="fs-3hx">{{ page.0.title|safe }}</p>
         </div>
     </div>
     <!--end::banner-->
     <!--begin::container-->
     <div class="container my-10">
-        {{ page.text|safe }}
+        {{ page.0.text|safe }}
     </div>
     <!--end::container-->
+    {% else %}
+        <div class="container">
+            <div class="p-10 d-flex justify-content-center">
+                <img src="{% static 'lib/metronic/assets/media/illustrations/unitedpalms-1/18.png' %}" class="h-300px" alt="">
+            </div>
+            <div class="text-center d-flex justify-content-center p-10">
+                <h1 class="d-flex text-center">{% trans 'İçerik bulunamadı!' %}</h1>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

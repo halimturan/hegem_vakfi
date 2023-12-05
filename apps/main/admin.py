@@ -5,9 +5,9 @@ from django.utils.html import format_html
 
 
 @admin.register(MainSlider)
-class SocialMediaSettingsAdmin(TranslatableAdmin):
-    list_display = ('name', 'order')
-    list_editable = ['order', ]
+class MainSliderAdmin(TranslatableAdmin):
+    list_display = ('name', 'order', 'is_publish')
+    list_editable = ['order', 'is_publish']
 
 
 @admin.register(Contact)
@@ -17,7 +17,8 @@ class ContactAdmin(TranslatableAdmin):
 
 @admin.register(Pages)
 class PagesAdmin(TranslatableAdmin):
-    list_display = ('name', 'link_tr', 'link_en', 'created_by', 'updated_by', 'created_at')
+    list_display = ('name', 'link_tr', 'link_en', 'created_by', 'updated_by', 'created_at', 'is_publish')
+    list_editable = ['is_publish', ]
 
     def link_tr(self, obj):
         return format_html(f'<a href="/tr/sayfalar/{obj.slug}">/tr/sayfa/{obj.slug}</a>')

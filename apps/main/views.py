@@ -30,5 +30,7 @@ def contact(request):
 
 
 def pages(request, slug):
-    q = Pages.objects.filter(slug=slug)
-    return render(request, 'pages.html', context={"page": q[0]})
+    q = Pages.objects.filter(slug=slug, is_publish=True)
+    if request.user.is_authenticated:
+        q = Pages.objects.filter(slug=slug)
+    return render(request, 'pages.html', context={"page": q})

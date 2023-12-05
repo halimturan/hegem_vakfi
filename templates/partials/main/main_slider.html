@@ -16,6 +16,7 @@
     data-tns-next-button="#kt_team_slider_next1">
 
         {% for slide in main_slider %}
+            {% if slide.is_publish or request.user.is_authenticated %}
             <!--begin::Item-->
             <div class="container mt-10">
                 <div class="d-flex">
@@ -40,6 +41,7 @@
                 </div>
             </div>
             <!--end::Item-->
+            {% endif %}
         {% endfor %}
     </div>
     <!--end::Slider-->

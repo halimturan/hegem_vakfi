@@ -5,7 +5,8 @@ from parler.admin import TranslatableAdmin
 
 @admin.register(News)
 class NewsAdmin(TranslatableAdmin):
-    list_display = ('name', 'slug')
+    list_display = ('name', 'slug', 'is_publish')
+    list_editable = ['is_publish', ]
 
 
 @admin.register(Images)

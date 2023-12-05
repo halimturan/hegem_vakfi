@@ -21,6 +21,7 @@ class News(AuditMixin, TranslatableModel):
     name = models.CharField(verbose_name="İsim", max_length=300)
     image = models.ImageField(verbose_name="Resim", upload_to="img/news")
     slug = AutoSlugField(always_update=True, populate_from='name', unique=True, verbose_name="Slug")
+    is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)
 
     def __str__(self):
         return self.name

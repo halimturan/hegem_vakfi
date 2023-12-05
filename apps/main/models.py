@@ -17,6 +17,7 @@ class MainSlider(AuditMixin, TranslatableModel):
     image = models.ImageField(upload_to="img/main_slider", verbose_name="Resim")
     image_alignment = models.CharField(verbose_name="Resim Konumu", max_length=10, choices=alignment_choices)
     name = models.CharField(max_length=100, verbose_name="İsim")
+    is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)
 
     def __str__(self):
         return self.name
@@ -46,6 +47,7 @@ class Pages(AuditMixin, TranslatableModel):
     )
     name = models.CharField(verbose_name="İsim", max_length=300)
     slug = AutoSlugField(always_update=True, populate_from='name', unique=True, verbose_name="Slug")
+    is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)
 
     def __str__(self):
         return self.name

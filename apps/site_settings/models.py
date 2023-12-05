@@ -22,8 +22,8 @@ class SiteSettings(AuditMixin):
     """General settings are here."""
     logo = models.FileField(upload_to="img/site_settings", verbose_name="Logo")
     shortcut = models.FileField(upload_to="img/site_settings", verbose_name="İkon")
-    phone = models.CharField(max_length=50, verbose_name="Telefon")
     email = models.CharField(max_length=100, verbose_name="Mail")
+    phone = models.CharField(max_length=50, verbose_name="Telefon", null=True, blank=True)
     address = models.CharField(max_length=500, verbose_name="Adres")
     google_maps_link = models.CharField(max_length=1000, verbose_name="Google Maps Link")
 
