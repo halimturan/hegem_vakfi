@@ -39,10 +39,12 @@
         <!--end::Menu-->
     </div>
     <div class="app-navbar flex-shrink-0 d-flex">
+        {% if site_settings.phone %}
         <div class="menu-item align-items-center position-relative d-flex">
             <i class="las la-phone fs-2x"></i>
             <span class="mx-2 fs-5 text-gray-600">{{ site_settings.phone }}</span>
         </div>
+        {% endif %}
         <div class="menu-item align-items-center position-relative mx-3 d-flex">
             <i class="las la-envelope fs-2x"></i>
             <span class="mx-2 fs-5 text-gray-600">{{site_settings.email}}</span>

@@ -9,6 +9,7 @@ class Editions(AuditMixin):
     writer = models.CharField(verbose_name="Yazar", max_length=300)
     year = models.SmallIntegerField(verbose_name="Yıl", null=True, blank=True)
     publisher = models.CharField(verbose_name="Yayın Evi", max_length=300, null=True, blank=True)
+    is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)
 
     def __str__(self):
         return self.name
@@ -23,6 +24,7 @@ class Reports(AuditMixin, TranslatableModel):
     )
     order = models.SmallIntegerField(verbose_name="Sıra")
     attachment = models.FileField(verbose_name="Ek Dosya", upload_to="img/what_we_do/reports", null=True, blank=True)
+    is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)
 
     def __str__(self):
         return self.name
@@ -38,6 +40,7 @@ class Projects(AuditMixin, TranslatableModel):
     )
     order = models.SmallIntegerField(verbose_name="Sıra")
     attachment = models.FileField(verbose_name="Ek Dosya", upload_to="img/what_we_do/reports", null=True, blank=True)
+    is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)
 
     def __str__(self):
         return self.name

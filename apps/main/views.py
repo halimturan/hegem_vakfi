@@ -8,15 +8,15 @@ from apps.main.forms import ContactForm
 def index(request):
     main_slider = MainSlider.objects.all().order_by('order')
     news = News.objects.all().order_by('-created_at')[:3]
-    editions = Editions.objects.all()
-    projects = Projects.objects.all()
-    reports = Reports.objects.all()
+    editions = Editions.objects.filter(is_publish=True)
+    projects = Projects.objects.filter(is_publish=True)
+    reports = Reports.objects.filter(is_publish=True)
     context = {
         "main_slider": main_slider,
         "news": news,
-        "editions": len(editions),
-        "projects": len(projects),
-        "reports": len(reports)
+        "editions": editions.count(),
+        "projects": projects.count(),
+        "reports": reports.count()
     }
     return render(request, 'index.html', context)
 

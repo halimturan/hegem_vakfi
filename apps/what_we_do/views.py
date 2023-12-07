@@ -4,7 +4,9 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def editions(request):
-    q = Editions.objects.all().order_by('year')
+    q = Editions.objects.filter(is_publish=True).order_by('year')
+    if request.user.is_authenticated:
+        q = Editions.objects.all().order_by('year')
     page_num = request.GET.get('page', 1)
     paginator = Paginator(q, 9)
     try:
@@ -19,7 +21,9 @@ def editions(request):
 
 
 def projects(request):
-    q = Projects.objects.all().order_by('order')
+    q = Projects.objects.filter(is_publish=True).order_by('order')
+    if request.user.is_authenticated:
+        q = Projects.objects.all().order_by('order')
     page_num = request.GET.get('page', 1)
     paginator = Paginator(q, 9)
     try:
@@ -34,7 +38,9 @@ def projects(request):
 
 
 def reports(request):
-    q = Reports.objects.all().order_by('order')
+    q = Reports.objects.filter(is_publish=True).order_by('order')
+    if request.user.is_authenticated:
+        q = Reports.objects.all().order_by('order')
     page_num = request.GET.get('page', 1)
     paginator = Paginator(q, 9)
     try:
