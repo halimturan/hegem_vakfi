@@ -24,6 +24,7 @@ from django.utils.translation import gettext_lazy as _
 urlpatterns = i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),
     path('super/user/admin/', admin.site.urls),
+    path('ckeditor', include('ckeditor_uploader.urls')),
     path('', include("apps.main.urls")),
     path(_('neler_yapiyoruz/'), include("apps.what_we_do.urls")),
     path(_('haberler/'), include("apps.news.urls")),
