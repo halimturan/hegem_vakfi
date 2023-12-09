@@ -3,6 +3,7 @@ from apps.common.mixins.audit import AuditMixin, TimeStampMixin
 from ckeditor.fields import RichTextField
 from parler.models import TranslatableModel, TranslatedFields
 from autoslug import AutoSlugField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class MainSlider(AuditMixin, TranslatableModel):
@@ -42,9 +43,10 @@ class Contact(TimeStampMixin):
 class Pages(AuditMixin, TranslatableModel):
     """News for main page."""
     translations = TranslatedFields(
-        text=RichTextField(verbose_name="Metin"),
+        text=RichTextUploadingField(verbose_name="Metin"),
         title=RichTextField(verbose_name="Başlık"),
     )
+    banner_img = models.FileField(verbose_name="Banner Resmi", upload_to="img/pages", null=True, blank=True)
     name = models.CharField(verbose_name="İsim", max_length=300)
     slug = AutoSlugField(always_update=True, populate_from='name', unique=True, verbose_name="Slug")
     is_publish = models.BooleanField(verbose_name="Yayınlansın mı?", default=False)

@@ -2,15 +2,15 @@
 {% load static i18n %}
 
 {% block title %}
-    {% trans 'Haberler' %}
+    {% trans 'Duyurular' %}
 {% endblock %}
 
 {% block content %}
     <!--begin::banner-->
     <div class="position-relative">
-        <img src="{% static 'img/news.jpg' %}" alt="" class="card-rounded mw-100 h-150px w-lg-100 h-lg-250px w-100 opacity-25" style="object-fit: cover;">
+        <img src="{% static 'img/announcements.jpg' %}" alt="" class="card-rounded mw-100 h-150px w-lg-100 h-lg-250px w-100 opacity-25" style="object-fit: cover;">
         <div class="title position-absolute fs-2x left-20 text-center w-100" style="top: 35%">
-            <p class="fs-3hx">{% trans 'Haberler' %}</p>
+            <p class="fs-3hx">{% trans 'Duyurular' %}</p>
         </div>
     </div>
     <!--end::banner-->
@@ -19,18 +19,18 @@
         <!--begin::breadcrumb-->
         <ol class="breadcrumb text-muted fs-6 fw-semibold my-10">
             <li class="breadcrumb-item"><a href="/" class="">{% trans 'Anasayfa' %}</a></li>
-            <li class="breadcrumb-item text-muted">{% trans 'Haberler' %}</li>
+            <li class="breadcrumb-item text-muted">{% trans 'Duyurular' %}</li>
         </ol>
         <!--end::breadcrumb-->
         <!--begin::info-->
-        {% with news_count=news|length %}
-        <span class="fs-3 text-gray-600 mb-10">{% blocktrans %}{{ news_count }} adet haber bulunmaktadır.{% endblocktrans %}</span>
+        {% with announcements_count=announcements|length %}
+        <span class="fs-3 text-gray-600 mb-10">{% blocktrans %}{{ announcements_count }} adet duyuru bulunmaktadır.{% endblocktrans %}</span>
         {% endwith %}
         <!--end::info-->
         <!--begin::row-->
         <div class="row mt-lg-10 mt-5">
-            {% for new in news %}
-                {% if new.is_publish or request.user.is_authenticated %}
+            {% for announcement in announcements %}
+                {% if announcement.is_publish or request.user.is_authenticated %}
                 <!--begin::col-lg-4-->
                 <div class="col-lg-4 mb-5 px-5">
                     <!--begin::card-->
@@ -39,7 +39,7 @@
                         <div class="card-body p-0">
                             <!--begin::image-->
                             <div class="card-rounded-bottom">
-                                <img src="{{ new.image.url }}" class="w-100 h-250px card-rounded" alt="image">
+                                <img src="{{ announcement.image.url }}" class="w-100 h-250px card-rounded" alt="image">
                             </div>
                             <!--end::image-->
                             <!--begin::card-->
@@ -49,7 +49,7 @@
                                     <!--begin::Col-->
                                     <div class="col-5 d-flex flex-column bg-light-primary px-4 py-3 rounded-2 mb-2">
                                         <div class="text-primary fw-semibold fs-6">
-                                            {{ new.created_at|date }}
+                                            {{ announcement.created_at|date }}
                                         </div>
                                     </div>
                                     <!--end::Col-->
@@ -60,12 +60,12 @@
                             <!--begin::news-title-->
                             <div class="p-6">
                                 <div class="h-100px">
-                                    {{ new.title|safe }}
+                                    {{ announcement.title|safe }}
                                 </div>
                             </div>
                             <!--end::news-title-->
                             <div class="d-flex justify-content-center mb-5 px-2">
-                                <a href="{% url 'news:news_detail' new.slug %}" class="btn btn-light-primary btn-sm">{% trans 'Haberi Oku' %}</a>
+                                <a href="{% url 'announcements:announcements_detail' announcement.slug %}" class="btn btn-light-primary btn-sm">{% trans 'Detaya Git' %}</a>
                             </div>
                         </div>
                         <!--end::Body-->
@@ -82,15 +82,15 @@
             <!--begin::Pages-->
             <ul class="pagination">
                 <li class="page-item previous">
-                    {% if news.has_previous %}
-                      <a href="?page={{ news.previous_page_number }}" class="page-link"><i class="previous"></i></a>
+                    {% if announcements.has_previous %}
+                      <a href="?page={{ announcements.previous_page_number }}" class="page-link"><i class="previous"></i></a>
                     {% else %}
                       <a href="#" class="page-link"><i class="previous"></i></a>
                     {% endif %}
                 </li>
 
-                {% for i in news.paginator.page_range %}
-                  {% if news.number == i %}
+                {% for i in announcements.paginator.page_range %}
+                  {% if announcements.number == i %}
                     <li class="page-item active">
                         <a href="#" class="page-link">{{ i }}</a>
                     </li>
@@ -103,8 +103,8 @@
 
 
                 <li class="page-item next">
-                    {% if news.has_next %}
-                        <a href="?page={{ news.next_page_number }}" class="page-link"><i class="next"></i></a>
+                    {% if announcements.has_next %}
+                        <a href="?page={{ announcements.next_page_number }}" class="page-link"><i class="next"></i></a>
                     {% else %}
                         <a href="#" class="page-link"><i class="next"></i></a>
                 {% endif %}

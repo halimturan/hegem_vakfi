@@ -2,6 +2,7 @@ from django.shortcuts import render
 from apps.main.models import MainSlider, Pages
 from apps.news.models import News
 from apps.what_we_do.models import Editions, Projects, Reports
+from apps.announcements.models import Announcements
 from apps.main.forms import ContactForm
 
 
@@ -11,12 +12,14 @@ def index(request):
     editions = Editions.objects.filter(is_publish=True)
     projects = Projects.objects.filter(is_publish=True)
     reports = Reports.objects.filter(is_publish=True)
+    announcements = Announcements.objects.filter(is_publish=True).order_by('order')
     context = {
         "main_slider": main_slider,
         "news": news,
         "editions": editions.count(),
         "projects": projects.count(),
-        "reports": reports.count()
+        "reports": reports.count(),
+        "announcements": announcements
     }
     return render(request, 'index.html', context)
 
