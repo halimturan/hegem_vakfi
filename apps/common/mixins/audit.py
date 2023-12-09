@@ -7,8 +7,8 @@ class TimeStampMixin(models.Model):
     """
     A mixin to automatically generate created and updated Date attributes for Models
     """
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Eklenme")
+    updated_at = models.DateTimeField(auto_now=True, verbose_name="Düzenlenme")
 
     class Meta:
         abstract = True

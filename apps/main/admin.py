@@ -17,7 +17,7 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(Pages)
 class PagesAdmin(TranslatableAdmin):
-    list_display = ('name', 'link_tr', 'link_en', 'created_by', 'updated_by', 'created_at', 'is_publish')
+    list_display = ('name', 'link_tr', 'link_en', 'created_by', 'updated_by', 'created_at', 'updated_at', 'is_publish')
     list_editable = ['is_publish', ]
 
     def link_tr(self, obj):
