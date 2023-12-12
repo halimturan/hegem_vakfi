@@ -3,6 +3,7 @@ from apps.common.mixins.audit import AuditMixin
 from ckeditor.fields import RichTextField
 from parler.models import TranslatableModel, TranslatedFields
 from autoslug import AutoSlugField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Images(AuditMixin):
@@ -15,7 +16,7 @@ class Images(AuditMixin):
 class News(AuditMixin, TranslatableModel):
     """News for main page."""
     translations = TranslatedFields(
-        text=RichTextField(verbose_name="Metin"),
+        text=RichTextUploadingField(verbose_name="Metin"),
         title=RichTextField(verbose_name="Başlık"),
     )
     name = models.CharField(verbose_name="İsim", max_length=300)
