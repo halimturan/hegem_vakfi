@@ -2,6 +2,7 @@ from django.contrib import admin
 from apps.main.models import MainSlider, Contact, Pages
 from parler.admin import TranslatableAdmin
 from django.utils.html import format_html
+from django import forms
 
 
 @admin.register(MainSlider)
@@ -10,9 +11,18 @@ class MainSliderAdmin(TranslatableAdmin):
     list_editable = ['order', 'is_publish']
 
 
+class ContactForm(forms.ModelForm):
+    message = forms.CharField(widget=forms.Textarea)
+
+    class Meta:
+        fields = '__all__'
+        model = Contact
+
+
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'subject', 'created_at')
+    form = ContactForm
 
 
 @admin.register(Pages)
