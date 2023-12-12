@@ -4,9 +4,9 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def all_news(request):
-    q = News.objects.filter(is_publish=True).order_by('created_at')
+    q = News.objects.filter(is_publish=True).order_by('-created_at')
     if request.user.is_authenticated:
-        q = News.objects.all().order_by('created_at')
+        q = News.objects.all().order_by('-created_at')
     page_num = request.GET.get('page', 1)
     paginator = Paginator(q, 6)
     try:
