@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form method="post" action="https://sanalpos.isbank.com.tr/fim/est3Dgate/">
+        <input type="text" name="clientid" value="700679591149"/>
+        <input type="text" name="storetype" value="3d_pay" />
+        <input type="text" name="hash" value="j0mHm/eg2RdKwu3LnMr1s7c8okU=" />
+        <input type="text" name="islemtipi" value="Auth" />
+        <input type="text" name="amount" value="91.96" />
+        <input type="text" name="currency" value="949" />
+        <input type="text" name="oid" value="1291899411421" />
+        <input type="text" name="okUrl" value="https://www.teststore.com/success.php"/>
+        <input type="text" name="failUrl" value="https://www.teststore.com/fail.php" />
+        <input type="text" name="lang" value="tr" />
+        <input type="text" name="rnd" value="asdf" />
+        <input type="text" name="pan" value="4242424242424242">
+        <input type="text" name="Ecom_Payment_Card_ExpDate_Year" value="28" >
+        <input type="text" name="Ecom_Payment_Card_ExpDate_Month" value="10">
+        <button type="submit">Gönder</button>
+    </form>
+{% endblock %}
