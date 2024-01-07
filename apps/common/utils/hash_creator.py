@@ -14,14 +14,14 @@ def hash_creator(oid, amount, store_key):
 
     r = requests.post('https://sanalpos.isbank.com.tr/fim/est3Dgate/', data={
         "clientid": "700679591149",
-        "storetype": "3d_pay",
+        "storetype": "3D_PAY",
         "hash": "j0mHm/eg2RdKwu3LnMr1s7c8okU=",
         "islemtipi": "Auth",
         "amount": "10",
         "currency": "949",
         "oid": "112233",
-        "okUrl": "http://127.0.0.1:8080/payment/success",
-        "failurl": "http://127.0.0.1:8080/payment/fail",
+        "okUrl": "https://hegemvakfi.org.tr/payment/success",
+        "failurl": "https://hegemvakfi.org.tr/payment/fail",
         "lang": "tr",
         "rnd": "asdf",
         "pan": "4242424242424242",

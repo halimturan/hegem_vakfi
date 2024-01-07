@@ -29,7 +29,7 @@ urlpatterns = i18n_patterns(
     path(_('neler_yapiyoruz/'), include("apps.what_we_do.urls")),
     path(_('haberler/'), include("apps.news.urls")),
     path(_('duyurular/'), include("apps.announcements.urls")),
-    path('odeme/', include("apps.payment.urls")),
+    path('payment/', include("apps.payment.urls")),
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

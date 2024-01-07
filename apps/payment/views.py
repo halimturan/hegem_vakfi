@@ -17,3 +17,11 @@ def make_payment(request):
     </CC5Request>
     """
     return render(request, 'payment/make_payment.html')
+
+
+def success_process(request):
+    return render(request, 'payment/success.html')
+
+
+def fail_process(request):
+    return render(request, 'payment/fail.html')
